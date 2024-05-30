@@ -7,7 +7,7 @@ const ping = spawn('ping', ['-c 1', `${testSubject}`])
 
 
 function restart() {
-    var res = spawn('acp', [`--host ${hostname}`, `--password ${password}`, 'reboot'])
+    var res = spawn('python', [`-m acp`, `-t ${hostname}`, `-p ${password}`, '--reboot'])
     console.log('Watchdog Triggered!!!')
     res.stdout.on('data', (data) => {
         console.log(`${data}`);
